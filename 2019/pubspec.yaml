@@ -1,0 +1,4 @@
+name: aoc_2019
+dependencies:
+  test: ^1.9.4
+  args: ^1.5.2
