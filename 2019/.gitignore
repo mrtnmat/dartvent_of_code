@@ -1,0 +1,4 @@
+*.s?p
+
+.dart_tool
+.packages
