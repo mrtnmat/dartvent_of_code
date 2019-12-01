@@ -12,10 +12,15 @@ void main() {
   });
 
   test('input stream', () async {
-    final inp = new File('lib/input/day1.txt');
-    final stream = parseInputStream(inp);
+    final stream = parseFilePath('lib/input/day1.txt');
     await stream.last.then((v) {
       expect(v, equals(111303));
     });
+  });
+
+  test('part2 mass -> fuel calculations', () {
+    expect(requiredFuel2(14), equals(2));
+    expect(requiredFuel2(1969), equals(966));
+    expect(requiredFuel2(100756), equals(50346));
   });
 }

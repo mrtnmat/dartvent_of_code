@@ -1,9 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
-
-int requiredFuel(int aMass) {
-  return (aMass / 3).floor() - 2;
-}
+import 'dart:math';
 
 Stream<int> parseFilePath(String path) {
   final inputFile = new File(path);
@@ -18,4 +15,16 @@ Stream<int> parseInput(File anInput) {
       .map((String event) {
     return int.parse(event.trim());
   });
+}
+
+int requiredFuel(int aMass) {
+  return max((aMass / 3).floor() - 2, 0);
+}
+
+int requiredFuel2(int aMass) {
+  final fuel = requiredFuel(aMass);
+  if (fuel < 1) {
+    return fuel;
+  }
+  return fuel + requiredFuel2(fuel);
 }
