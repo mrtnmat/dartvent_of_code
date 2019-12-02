@@ -2,10 +2,11 @@ import 'dart:collection';
 import 'dart:math';
 import '../lib/day2.dart' as day2;
 import 'package:test/test.dart';
- 
+
 var rnd = Random();
 
 void main() {
+  test('', () {});
   test('testing opcode 1', () {
     final val1 = rnd.nextInt(100);
     final val2 = rnd.nextInt(100);
@@ -78,6 +79,14 @@ void main() {
       memory = day2.exec(memory);
       expect(memory[0], equals(30));
       expect(memory[4], equals(2));
+    });
+  });
+  group('parser', () {
+    test('', () {
+      final memory = day2.parseInput();
+      expect(memory[3], equals(3));
+      expect(memory[6], equals(2));
+      expect(memory[127], equals(14));
     });
   });
 }

@@ -1,3 +1,7 @@
+import 'dart:collection';
+import 'dart:convert';
+import 'dart:io';
+
 Map opcode1(Map m, int i) {
   if (m[0 + i] != 1) {
     throw new ArgumentError.value(m[0 + i], 'opcode');
@@ -6,7 +10,7 @@ Map opcode1(Map m, int i) {
   final i1 = m[1 + i];
   final i2 = m[2 + i];
   final i3 = m[3 + i];
-  
+
   m[i3] = m[i1] + m[i2];
   return m;
 }
@@ -19,7 +23,7 @@ Map opcode2(Map m, int i) {
   final i1 = m[1 + i];
   final i2 = m[2 + i];
   final i3 = m[3 + i];
-  
+
   m[i3] = m[i1] * m[i2];
   return m;
 }
@@ -41,4 +45,10 @@ Map exec(Map m) {
     }
     i += 4;
   }
+}
+
+Map parseInput() {
+  final s = new File('lib/input/day2.txt').readAsStringSync().trim().split(',');
+  Map<int, int> n = s.asMap().map((k, v) => new MapEntry(k, int.parse(v)));
+  return n;
 }
