@@ -32,14 +32,52 @@ void main() {
     memory = day2.opcode2(memory, 0);
     expect(memory[30], equals(val1 * val2));
   });
-  test('exec function', () {
-    var memory = new HashMap();
-    memory[0] = 1;
-    memory[1] = 0;
-    memory[2] = 0;
-    memory[3] = 0;
-    memory[4] = 99;
-    memory = day2.exec(memory);
-    expect(memory[0], equals(2));
+  group('exec function', () {
+    test('exec1', () {
+      var memory = new HashMap();
+      memory[0] = 1;
+      memory[1] = 0;
+      memory[2] = 0;
+      memory[3] = 0;
+      memory[4] = 99;
+      memory = day2.exec(memory);
+      expect(memory[0], equals(2));
+    });
+    test('exec2', () {
+      var memory = new HashMap();
+      memory[0] = 2;
+      memory[1] = 3;
+      memory[2] = 0;
+      memory[3] = 3;
+      memory[4] = 99;
+      memory = day2.exec(memory);
+      expect(memory[3], equals(6));
+    });
+    test('exec3', () {
+      var memory = new HashMap();
+      memory[0] = 2;
+      memory[1] = 4;
+      memory[2] = 4;
+      memory[3] = 5;
+      memory[4] = 99;
+      memory[5] = 0;
+      memory = day2.exec(memory);
+      expect(memory[5], equals(9801));
+    });
+    test('exec3', () {
+      var memory = new HashMap();
+      memory[0] = 1;
+      memory[1] = 1;
+      memory[2] = 1;
+      memory[3] = 4;
+      memory[4] = 99;
+      memory[5] = 5;
+      memory[6] = 6;
+      memory[7] = 0;
+      memory[8] = 99;
+      memory = day2.exec(memory);
+      expect(memory[0], equals(30));
+      expect(memory[4], equals(2));
+    });
   });
 }
